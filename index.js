@@ -2,10 +2,10 @@ const core = require('@actions/core');
 const newman = require('newman');
 const start = () => {
 	try {
-		const newmanOptions = core.getInput('options');
-		console.log(`Newman Options:${newmanOptions}`);
+		const newmanStringifierOptions = core.getInput('options');
+		console.log(`Newman Options:${newmanStringifierOptions}`);
 		//Start executing postman collection
-		executeNewman(newmanOptions);
+		executeNewman(JSON.parse(newmanStringifierOptions));
 	} catch (error) {
 		core.setFailed(error.message);
 	}
