@@ -12,11 +12,12 @@ const start = () => {
 }
 const executeNewman = (newmanOptions) => {
 	console.log("Starting Running newman")
-	newman.run(newmanOptions, function (err) {
+	newman.run(newmanOptions, function (err, summary) {
 		if (err) {
 			throw err;
 		}
 		console.log('collection run complete!');
+		core.setOutput('summary', JSON.stringify(summary))
 	})
 }
 
