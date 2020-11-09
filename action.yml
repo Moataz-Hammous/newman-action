@@ -1,0 +1,13 @@
+name: 'Newman Action'
+description: 'Run Postman collections via Newman Action'
+author: 'Moataz Hammous'
+branding:
+  icon: 'activity'
+  color: 'orange'
+inputs:
+  options:
+    description: This is a required argument and it contains all information pertaining to running a collection.
+    required: true
+runs:
+  using: node12
+  main: 'dist/index.js'
