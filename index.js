@@ -13,8 +13,9 @@ const start = () => {
 const executeNewman = (newmanOptions) => {
 	console.log("Starting Running newman")
 	newman.run(newmanOptions, function (err, summary) {
-		if (err) {
-			throw err;
+		if (err || summary.error || summary.run.failures.length) {
+			const errorMessage = JSON.stringify(err || summary.error || summary.run.failures)
+			core.setFailed(errorMessage);
 		}
 		console.log('collection run complete!');
 		core.setOutput('summary', JSON.stringify(summary))
